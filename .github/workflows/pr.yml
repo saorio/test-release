@@ -16,7 +16,7 @@ jobs:
       run: |
         git config --global --add safe.directory $(pwd)
         echo $(pwd)
-      working-directory: .
+      working-directory: ./test-release
     - name: git-pr-release
       uses: bakunyo/git-pr-release-action@v1.3
       env:
