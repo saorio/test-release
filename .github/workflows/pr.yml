@@ -8,11 +8,15 @@ jobs:
     name: git-pr-release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: checkout
+      uses: actions/checkout@master
       with:
         fetch-depth: 0
+    - name: add safe directory
+      run: git config --global --add safe.directory $(pwd)
     - name: git-pr-release
       uses: bakunyo/git-pr-release-action@v1.3
       env:
         GIT_PR_RELEASE_BRANCH_STAGING: devel
+        GIT_PR_RELEASE_BRANCH_PRODUCTION: main
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
