@@ -2,17 +2,20 @@ name: Create PR from devel to main
 on:
   push:
     branches:
-      - devel
+      - add*
 jobs:
   gitPrRelease:
     name: git-pr-release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: add safe directory
+      uses: actions/checkout@master
       with:
         fetch-depth: 0
+      run: git config --global --add safe.directory $(pwd)
     - name: git-pr-release
       uses: bakunyo/git-pr-release-action@v1.3
       env:
         GIT_PR_RELEASE_BRANCH_STAGING: devel
+        GIT_PR_RELEASE_BRANCH_PRODUCTION: main
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
