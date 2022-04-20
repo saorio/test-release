@@ -2,7 +2,7 @@ name: Create PR from devel to main
 on:
   push:
     branches:
-      - 'add*'
+      - devel
 jobs:
   gitPrRelease:
     name: git-pr-release
