@@ -13,7 +13,10 @@ jobs:
       with:
         fetch-depth: 0
     - name: add safe directory
-      run: git config --global --add safe.directory $(pwd)
+      run: |
+        git config --global --add safe.directory $(pwd)
+        echo $(pwd)
+      working-directory: .
     - name: git-pr-release
       uses: bakunyo/git-pr-release-action@v1.3
       env:
