@@ -48,5 +48,6 @@ jobs:
         GIT_PR_RELEASE_BRANCH_PRODUCTION: main
         GIT_PR_RELEASE_BRANCH_STAGING: devel
       run: |
+        apt-get update && apt-get upgrade
         gem install -N git-pr-release
         git-pr-release --no-fetch
