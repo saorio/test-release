@@ -4,10 +4,10 @@ on:
     paths:
     - '.gitignore'
 
-#permissions:
-#  id-token: write
-#  contents: read
-#  actions: read
+permissions:
+  id-token: write
+  contents: write
+  actions: write
 
 jobs:
   create_issue:
