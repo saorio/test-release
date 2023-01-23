@@ -4,6 +4,11 @@ on:
     paths:
     - '.gitignore'
 
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+
 jobs:
   create_issue:
     name: file Update
@@ -18,7 +23,7 @@ jobs:
     - name: Msar Update
       uses: actions-ecosystem/action-create-issue@v1.0.0
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.ACTION_TOKEN }}
         repo: saorio/conan-test
         title: "File Update ${{ steps.date.outputs.today }}"
         assignees: "saorio"
