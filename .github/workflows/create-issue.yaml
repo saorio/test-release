@@ -4,13 +4,12 @@ on:
     paths:
     - '.gitignore'
 
-permissions:
-  id-token: read
-  contents: read
-  actions: write
-
 jobs:
   create_issue:
+    permissions:
+      id-token: read
+      contents: read
+      actions: write
     name: file Update
     runs-on: ubuntu-latest
     permissions:
