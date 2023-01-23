@@ -20,7 +20,7 @@ jobs:
         repo: saorio/conan-test
         title: "File Update ${{ steps.date.outputs.today }}"
         assignees: "saorio"
-        labels: "feature request"
+        labels: "feature"
         body: |
           ### Need to update .gitignore
           - [ ] Update .gitignore
