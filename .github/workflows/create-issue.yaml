@@ -12,8 +12,6 @@ jobs:
       actions: write
     name: file Update
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
     - name: Get date
       id: date
