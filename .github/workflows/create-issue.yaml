@@ -5,8 +5,8 @@ on:
     - '.gitignore'
 
 permissions:
-  id-token: write
-  contents: write
+  id-token: read
+  contents: read
   actions: write
 
 jobs:
