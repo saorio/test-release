@@ -8,10 +8,6 @@ jobs:
   create_issue:
     name: file Update
     runs-on: ubuntu-latest
-    permissions:
-      id-token: read
-      contents: read
-      actions: write
     steps:
     - name: Get date
       id: date
