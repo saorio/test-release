@@ -3,7 +3,7 @@ name: Create Release
 on:
   pull_request:
     branches:
-      - main
+      - 'release/*'
     types: [closed]
 
 jobs:
@@ -18,3 +18,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
+          name: $GITHUB_REF_NAME
