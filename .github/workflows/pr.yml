@@ -1,0 +1,53 @@
+# https://github.com/bakunyo/git-pr-release-action/issues/15
+# name: Create PR from devel to main
+# on:
+#   push:
+#     branches:
+#       - devel
+# jobs:
+#   gitPrRelease:
+#     name: git-pr-release
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: checkout
+#       uses: actions/checkout@master
+#       with:
+#         fetch-depth: 0
+#     - name: add safe directory
+#       run: |
+#         git config --global --add safe.directory $(pwd)
+#         echo $(pwd)
+#       working-directory: ./test-release
+#     - name: git-pr-release
+#       uses: bakunyo/git-pr-release-action@v1.3
+#       env:
+#         GIT_PR_RELEASE_BRANCH_STAGING: devel
+#         GIT_PR_RELEASE_BRANCH_PRODUCTION: main
+#         GITHUB_TOKEN: ${{ secrets.TOKEN }}
+name: Create PR from devel to main
+on:
+  push:
+    branches:
+      - devel
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Set up Ruby 3.0
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+        bundler-cache: true
+    - name: Create a release pull request
+      env:
+        GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GIT_PR_RELEASE_BRANCH_PRODUCTION: main
+        GIT_PR_RELEASE_BRANCH_STAGING: devel
+      run: |
+        apt-get update && apt-get upgrade
+        gem install -N git-pr-release
+        git-pr-release --no-fetch
