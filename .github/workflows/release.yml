@@ -10,7 +10,8 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     name: Create release
-    if: contains(github.ref, 'release')
+    # https://github.com/orgs/community/discussions/25216
+    # if: contains(github.ref, 'release')
     steps:
       - uses: actions/checkout@v3
         with:
