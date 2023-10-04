@@ -10,7 +10,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     name: Create release
-    if: contains(github.head_ref, 'release')
+    if: contains(fromJSON('["release", "hotfix"]'), github.head_ref)
     steps:
       - uses: actions/checkout@v3
         with:
