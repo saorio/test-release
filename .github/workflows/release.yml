@@ -10,8 +10,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     name: Create release
-    # https://github.com/orgs/community/discussions/25216
-    # if: contains(github.ref, 'release')
+    if: contains(github.head_ref, 'release')
     steps:
       - uses: actions/checkout@v3
         with:
@@ -19,7 +18,7 @@ jobs:
       - name: Extract version
         id: extract_version
         run: |
-          echo "::set-output name=version::${GITHUB_REF/refs\/heads\/release/}"
+          echo "version=${GITHUB_HEAD_REF##*/}" >> $GITHUB_OUTPUT
       - name: Create tag
         id: create_tag
         run: |
