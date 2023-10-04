@@ -3,9 +3,7 @@ name: Create Release
 on:
   push:
     tags:
-      - 'v*'
-      - '!*.rc*'
-      - '!*.b*'
+      - 'v*.*.*'
 
 jobs:
   create-release:
