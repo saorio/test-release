@@ -29,3 +29,4 @@ jobs:
         with:
           generate_release_notes: true
           name: ${{ steps.extract_version.outputs.version }}
+          tag_name: ${{ steps.extract_version.outputs.version }}
