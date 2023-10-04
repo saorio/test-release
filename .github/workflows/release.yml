@@ -3,11 +3,12 @@ name: Create Release
 on:
   pull_request:
     branches:
-      - 'release/v**'
+      - main
     types: [closed]
 
 jobs:
   create-release:
+    if ${{ github.ref == 'refs/heads/release/**' }}
     name: Create release
     runs-on: ubuntu-latest
     steps:
