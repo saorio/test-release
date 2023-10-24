@@ -1,0 +1,26 @@
+name: Detect file
+on:
+  push:
+    paths:
+    - '.gitignore'
+
+jobs:
+  create_issue:
+    name: file Update
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get date
+      id: date
+      run: |
+        echo "::set-output name=today::$(date "+%Y/%m/%d")"
+    - name: Msar Update
+      uses: actions-ecosystem/action-create-issue@v1.0.0
+      with:
+        github_token: ${{ secrets.ACTION_TOKEN }}
+        repo: saorio/conan-test
+        title: "File Update ${{ steps.date.outputs.today }}"
+        assignees: "saorio"
+        labels: "feature"
+        body: |
+          ### Need to update .gitignore
+          - [ ] Update .gitignore
